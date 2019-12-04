@@ -17,10 +17,7 @@ public class Cliente extends Pessoa {
 		return corretor.getCreci();
 	}
 	
-	public String toString() {
-		return "CPF:" + this.getCpf() + "\nTelefone:" + this.getTelefone() + "\nNome:" 
-	            + this.getNome() + "\nCorretor:" + this.corretor;
-	}
+	
 	
 	
 	
