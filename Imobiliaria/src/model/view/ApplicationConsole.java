@@ -95,21 +95,37 @@ public class ApplicationConsole {
 		try {
 			cpfCorretor = Long.parseLong(JOptionPane.showInputDialog("Qual o CPF do Corretor? "
 					+ "(Apenas números)"));
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
-		}
-		
-		try {
-			creciCorretor = Integer.parseInt(JOptionPane.showInputDialog("Qual o Creci do Corretor? "
-					+ "(Apenas números)"));
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
-		}
-		
-		try {
+			if(cpfCorretor > 99999999999L ) {
+				throw new CpfInvalidoException("Número de CPF muito longo!");
+			} 
+			if(cpfCorretor < 1000000000L) {
+				throw new CpfInvalidoException("Número de CPF muito curto!");
+			}
 			telefoneCorretor = Long.parseLong(JOptionPane.showInputDialog("Qual o telefone do Corretor? "
+					+ "(Apenas números, DDD incluído)"));
+			if(telefoneCorretor > 99999999999L) {
+				throw new TelefoneInvalidoException("Número de telefone muito longo!");
+			}
+			if(telefoneCorretor < 10000000000L) {
+				throw new TelefoneInvalidoException("Número de telefone muito curto!");
+				
+			}creciCorretor = Integer.parseInt(JOptionPane.showInputDialog("Qual o Creci do Corretor? "
 					+ "(Apenas números)"));
-		} catch (Exception e) {
+			if(creciCorretor> 99999 ) {
+				throw new CreciInvalidoException("Somente 5 digitos!");
+			}if(creciCorretor< 10000 ) {
+				throw new CreciInvalidoException("Somente 5 digitos!");
+			}
+			
+			Corretor corretor = new Corretor(cpfCorretor, telefoneCorretor, nomeCorretor,creciCorretor);
+			
+			corretorList.addCorretor(corretor);
+			
+			JOptionPane.showMessageDialog(null, "Corretor  cadastrado com sucesso!");
+
+		} catch (CpfInvalidoException e) {
+			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+		} catch (TelefoneInvalidoException e) {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 		}
 		
@@ -236,13 +252,13 @@ public class ApplicationConsole {
 			if(corretorList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum corretor cadastrado!");
 			}
-			/* Object corretor = JOptionPane.showInputDialog(null, "Selecione seu Corretor","Lista de Corretores",
-			JOptionPane.PLAIN_MESSAGE,null, corretorList.transformaEmArray(), null);
+			 Object corretor = JOptionPane.showInputDialog(null, "Selecione seu Corretor","Lista de Corretores",
+			JOptionPane.PLAIN_MESSAGE,null, corretorList.transformaEmArrayDeNomes(), null);
 			if (corretor == null) {
 				JOptionPane.showMessageDialog(null, "Corretor não selecionado");
 			} else {
-				// JOptionPane.showMessageDialog(null, corretorList.toStringOfObject(corretor));
-			} */
+				 JOptionPane.showMessageDialog(null, corretorList.toStringOfObject(corretor));
+			} 
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}

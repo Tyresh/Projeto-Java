@@ -8,7 +8,7 @@ public class Corretor extends Pessoa {
 	private Imobiliaria imobiliaria;
 	private int creci;	
 	
-	public Corretor() {
+	public Corretor(long cpfCorretor, long telefoneCorretor, String nomeCorretor, int creciCorretor) {
 		super();
 	}
 	
