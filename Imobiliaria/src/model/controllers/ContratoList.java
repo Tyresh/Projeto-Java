@@ -31,6 +31,10 @@ public class ContratoList {
 		return contratoList.contains(c);
 	}
 	
+	public boolean estaVazia() {
+		return contratoList.isEmpty();
+	}
+	
 	public String toString() {
 		String result = "";
 		for (Contrato contrato: contratoList) {

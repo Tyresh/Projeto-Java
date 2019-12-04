@@ -8,7 +8,7 @@ public class ImovelList {
 	private List<Imovel> imovelList;
 	
 	public ImovelList(){
-		imovelList= new ArrayList<>() ;
+		imovelList= new ArrayList<>();
 	}
 	
 	public void addImovel(Imovel i) {
@@ -29,6 +29,10 @@ public class ImovelList {
 	
 	public boolean hasElement(Imovel i) {
 		return imovelList.contains(i);
+	}
+	
+	public boolean estaVazia() {
+		return imovelList.isEmpty();
 	}
 	
 	public String toString() {
