@@ -3,6 +3,7 @@ package model.view;
 import javax.swing.JOptionPane;
 import model.controllers.*;
 import model.entities.*;
+import model.enums.TipoContrato;
 import model.exceptions.*;
 
 public class ApplicationConsole {
@@ -118,18 +119,60 @@ public class ApplicationConsole {
 	}
 	
 	public static void firmaContrato() {
+		boolean fiador;
+		Enum tipoContrato;
+		int numero;
 		try {
 			if(corretorList.estaVazia() || clienteList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum corretor, cliente ou imóvel cadastrado!");
 			}
+			
+			numero = Integer.parseInt(JOptionPane.showInputDialog("Digite o número do contrato:"));
+			
+			
+			tipoContrato =  TipoContrato.valueOf(JOptionPane.showInputDialog("Digite o tipo do Contrato (VENDA OU ALUGUEL):"));
+			if(tipoContrato == null) {
+				throw new CampoInvalidoException("Campo não selecionado");
+			}
+			
+			int resposta = JOptionPane.showConfirmDialog(null, "O contrato possui fiador?");
+			
+			if (resposta == 0) {
+				fiador = true;
+			} else if (resposta == 1) {
+				fiador = false;
+			} else {
+				throw new CampoInvalidoException("Fiador não selecionado!");
+			}
+			
 			Object corretor = JOptionPane.showInputDialog(null, "Selecione seu Corretor","Lista de Corretores",
 					JOptionPane.PLAIN_MESSAGE,null, corretorList.transformaEmArrayDeNomes(), null);
 			if(corretor == null) {
-				JOptionPane.showMessageDialog(null, "Campo não selecionado");
+				throw new CampoInvalidoException("Campo não selecionado");
 			}
+			
+			Object cliente =  JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",
+					JOptionPane.PLAIN_MESSAGE,null, clienteList.transformaEmArrayDeNomes(), null);
+			if(cliente == null) {
+				throw new CampoInvalidoException("Campo não selecionado");
+			}
+			
+			Object imovel =  JOptionPane.showInputDialog(null, "Selecione seu Imovel","Lista de Imóveis",
+					JOptionPane.PLAIN_MESSAGE,null, imovelList.transformaEmArrayDeNomes(), null);
+			if(imovel == null) {
+				throw new CampoInvalidoException("Campo não selecionado");
+			}
+			
+			Contrato contato = new Contrato(numero, tipoContrato, fiador, corretorList.findCorretor(corretor);
+			
+			
+			
 		}
 		catch (CampoInvalidoException e ) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
+		}
+		catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 		}
 	}
 
@@ -210,6 +253,7 @@ public class ApplicationConsole {
 		static CorretorList corretorList = new CorretorList();
 		static ContratoList contratoList = new ContratoList();
 		static ClienteList clienteList = new ClienteList();
+		static String[] tipoContratoArray = {"VENDA", "ALUGUEL"};
 		
 		//Criando instancias de imobiliaria
 		static Imobiliaria imob1 = new Imobiliaria("12345678901113", "Rua saudades dela", "Lego");

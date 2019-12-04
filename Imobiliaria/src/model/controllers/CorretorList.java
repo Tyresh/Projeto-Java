@@ -56,6 +56,15 @@ public class CorretorList {
 		return find;
 	}
 	
+	public Corretor findCorretor (String corretor) {
+		Corretor find = new Corretor();
+		for (int i = 0; i < corretorList.size(); i++) {
+			if (this.getCorretor(i).getNome().equals(corretor)) {
+				find = this.getCorretor(i);
+			}
+		}
+		return find;
+	}
 	public String toString() {
 		String result = "";
 		for (Corretor corretor: corretorList) {
