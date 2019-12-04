@@ -29,7 +29,7 @@ public class ApplicationConsole {
 	public static void main (String[] args) {
 		ImovelList imovelList = new ImovelList();
 		 boolean lever = true;
-		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor", 
+		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor","Firmar Contrato",
 				"Exibir Contrato", "Exibir Imóvel"};
 		 Object resposta;
 		
