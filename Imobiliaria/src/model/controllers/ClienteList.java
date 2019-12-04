@@ -45,7 +45,7 @@ public class ClienteList {
 		for (Cliente cliente: clienteList) {
 			result = result + cliente.getNome() + " ";		
 		}
-		String[] nomeCLientes = result.split(" ");
+		String[] nomeClientes = result.split(" ");
 		return  nomeClientes;  // Como ele separa os nomes por \n, penseieu usar esse split pra criar a array.
 	}
 
