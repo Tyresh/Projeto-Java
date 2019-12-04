@@ -12,7 +12,7 @@ public class Corretor extends Pessoa {
 		super();
 	}
 	
-	public Corretor(int creci, int telefone, String nome, Imobiliaria imobiliaria, long cpf) throws
+	public Corretor(int creci, long telefone, String nome, Imobiliaria imobiliaria, long cpf) throws
 	ValorInvalidoException, CpfInvalidoException  {
 		super(nome, telefone,cpf);
 		this.creci = creci;

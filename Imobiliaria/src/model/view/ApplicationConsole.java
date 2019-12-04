@@ -3,18 +3,17 @@ package model.view;
 import javax.swing.JOptionPane;
 import model.controllers.*;
 import model.entities.*;
-import model.exceptions.CpfInvalidoException;
-//import model.exceptions.*;
-import model.exceptions.ValorInvalidoException;
+import model.exceptions.*;
 
 public class ApplicationConsole {
 	
 	//Função Main
-	public static void main (String[] args) throws ValorInvalidoException, CpfInvalidoException {
+	public static void main (String[] args) throws ValorInvalidoException, CpfInvalidoException, 
+	TelefoneInvalidoException, CreciInvalidoException {
 		ImovelList imovelList = new ImovelList();
 		 boolean lever = true;
 		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor","Firmar Contrato",
-				"Exibir Contrato", "Exibir Imóvel","Lista de clientes"};
+				"Exibir Contrato", "Exibir Imóvel","Lista de clientes cadastrados"};
 		 Object resposta;
 		
 		while (lever) {
@@ -42,53 +41,65 @@ public class ApplicationConsole {
 		} 
 	
 	
-	public static void cadastraCliente() throws ValorInvalidoException, CpfInvalidoException {
-		long cpfCliente = 0, telefoneCliente = 0;
+	public static void cadastraCliente() throws TelefoneInvalidoException, CpfInvalidoException,
+	ValorInvalidoException {
+			long cpfCliente = 0, telefoneCliente = 0;
+			
 			String nomeCliente = JOptionPane.showInputDialog("Qual o nome do Cliente?");
+			
 			try {
 				cpfCliente = Long.parseLong(JOptionPane.showInputDialog("Qual o CPF do Cliente? "
 						+ "(Apenas números)"));
+				if(cpfCliente > 99999999999L ) {
+					throw new CpfInvalidoException("Número de CPF muito longo!");
+				} 
+				if(cpfCliente < 10000000000L) {
+					throw new CpfInvalidoException("Número de CPF muito curto!");
+				}
+				telefoneCliente = Long.parseLong(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
+						+ "(Apenas números, DDD incluído)"));
+				if(telefoneCliente > 99999999999L) {
+					throw new TelefoneInvalidoException("Número de telefone muito longo!");
+				}
+				if(telefoneCliente < 10000000000L) {
+					throw new TelefoneInvalidoException("Número de telefone muito curto!");
+				}
+				
+				Cliente cliente = new Cliente(cpfCliente, telefoneCliente, nomeCliente);
+				clienteList.addCliente(cliente);
+				JOptionPane.showMessageDialog(null, "Cliente  cadastrado com sucesso!");
 
-				if(cpfCliente > 999999999999l ) {
-					throw new CpfInvalidoException("Número de cpf muito longo!");// Aqui ele funciona, mas continua a aplicação,
-																				//eu esqueci como faz o erro que para tudo,
-				}
-				if(cpfCliente <10000000000l) {
-					throw new CpfInvalidoException("Número muito curto!");
-				}
-
-				} catch (CpfInvalidoException e) {
-					JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
-				}
-				try {
-					telefoneCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
-						+ "(Apenas números)"));
-				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+			} catch (CpfInvalidoException e) {
+				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+			} catch (TelefoneInvalidoException e) {
+				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 			}
-		    Cliente cliente = new Cliente(cpfCliente, telefoneCliente, nomeCliente);
-		    clienteList.addCliente(cliente);
-		    JOptionPane.showMessageDialog(null, "Cliente  cadastrado com sucesso!");
+			
+		  
 	}
 	
-	public static void cadastraCorretor() {
-		int cpfCorretor, creciCorretor, telefoneCorretor;
+	public static void cadastraCorretor() throws TelefoneInvalidoException, CpfInvalidoException,
+	ValorInvalidoException, CreciInvalidoException{
+		long cpfCorretor, telefoneCorretor;
+		int creciCorretor;
 		
 		String nomeCorretor = JOptionPane.showInputDialog("Qual o nome do Corretor?");
 		try {
-			cpfCorretor = Integer.parseInt(JOptionPane.showInputDialog("Qual o CPF do Corretor? "
+			cpfCorretor = Long.parseLong(JOptionPane.showInputDialog("Qual o CPF do Corretor? "
 					+ "(Apenas números)"));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 		}
+		
 		try {
 			creciCorretor = Integer.parseInt(JOptionPane.showInputDialog("Qual o Creci do Corretor? "
 					+ "(Apenas números)"));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 		}
+		
 		try {
-			telefoneCorretor = Integer.parseInt(JOptionPane.showInputDialog("Qual o telefone do Corretor? "
+			telefoneCorretor = Long.parseLong(JOptionPane.showInputDialog("Qual o telefone do Corretor? "
 					+ "(Apenas números)"));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
@@ -113,6 +124,12 @@ public class ApplicationConsole {
 	
 	public static void exibirImovel() {
 		
+	}
+	
+	
+	public static void exibirClientes() {
+		JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",JOptionPane.PLAIN_MESSAGE,
+		null, clienteList.transformaEmArray(), null);
 	}
 	
 	//Métodos estáticos para criar as listas de objetos
