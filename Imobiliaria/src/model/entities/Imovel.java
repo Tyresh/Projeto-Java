@@ -12,16 +12,20 @@ public class Imovel {
 	private float preco;
 	private Imobiliaria imobiliaria;
 	
-	public Imovel(int matricula, TipoImovel tipoImovel, State estado, String endereco, String nome, float preco,
-		Imobiliaria imobiliaria) {
+	
+	public Imovel() {
+		
+	}
+	
+	
+	public Imovel(int matricula, String tipoImovel, String estado, String endereco, String nome, float preco) {
 		
 		this.matricula = matricula;
-		this.tipoImovel = tipoImovel;
-		this.estado = estado;
+		this.tipoImovel = TipoImovel.valueOf(tipoImovel);
+		this.estado = State.valueOf(estado);
 		this.endereco = endereco;
 		this.nome = nome;
 		this.preco = preco;
-		this.imobiliaria = imobiliaria;
 	}
 
 	public int getMatricula() {
@@ -44,8 +48,8 @@ public class Imovel {
 		return estado;
 	}
 
-	public void setEstado(State estado) {
-		this.estado = estado;
+	public void setEstado( String estado) {
+		this.estado = State.valueOf(estado);
 	}
 
 	public String getEndereco() {
@@ -77,6 +81,10 @@ public class Imovel {
 	}
 
 	
-	
+	public String toString() {
+		return "Nome do imóvel: " + this.nome + ", matrícula: " + this.matricula + "\n" +
+				"Endereço: " + this.endereco + "\n" + "Preço: " + this.preco + ", Status: " +
+				this.estado + "\n";
+	}
 	
 }
