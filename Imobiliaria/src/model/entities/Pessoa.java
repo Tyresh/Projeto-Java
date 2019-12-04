@@ -15,13 +15,11 @@ public abstract class Pessoa  {
 	
 
 	public Pessoa(String nome, long telefoneCliente, long cpfCliente)throws ValorInvalidoException, CpfInvalidoException {
-	
-
 		try{
 			this.nome = nome;
 			this.cpf = cpfCliente;
 			this.telefone = telefoneCliente;
-		}catch(Exception e) {
+		} catch(Exception e) {
 			System.err.println("Digite um valor correto");
 		}
 	}
@@ -49,6 +47,7 @@ public abstract class Pessoa  {
 		 public void setCpf(long cpf) {
 		  this.cpf = cpf;
 		 }
-	
-	
+	public String toString() {
+		return "Nome: " + this.nome + "\nCPF: " + this.cpf;
+	}
 }
