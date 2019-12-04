@@ -56,7 +56,7 @@ public class Contrato {
 		return corretor.getCreci();
 	}
 
-	public int getCpfCliente() {
+	public long getCpfCliente() {
 		return cliente.getCpf();
 	}
 

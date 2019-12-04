@@ -47,20 +47,23 @@ public class ApplicationConsole {
 			try {
 				cpfCliente = Long.parseLong(JOptionPane.showInputDialog("Qual o CPF do Cliente? "
 						+ "(Apenas números)"));
-				if(cpfCliente <= 99999999999l) {
-					throw new CpfInvalidoException("Número de cpf muito curto!");// Aqui ele funciona, mas continua a aplicação,
+
+				if(cpfCliente > 999999999999l ) {
+					throw new CpfInvalidoException("Número de cpf muito longo!");// Aqui ele funciona, mas continua a aplicação,
 																				//eu esqueci como faz o erro que para tudo,
-																					//creio que seja Com Runtime ao inves de só exception
-					
 				}
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
-			}
-			try {
-				telefoneCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
+				if(cpfCliente <10000000000l) {
+					throw new CpfInvalidoException("Número muito curto!");
+				}
+
+				} catch (CpfInvalidoException e) {
+					JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+				}
+				try {
+					telefoneCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
 						+ "(Apenas números)"));
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 			}
 		    Cliente cliente = new Cliente(cpfCliente, telefoneCliente, nomeCliente);
 		    clienteList.addCliente(cliente);

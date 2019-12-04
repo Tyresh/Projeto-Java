@@ -1,5 +1,8 @@
 package model.entities;
 
+import model.exceptions.CpfInvalidoException;
+import model.exceptions.ValorInvalidoException;
+
 public class Corretor extends Pessoa {
 
 	private Imobiliaria imobiliaria;
@@ -9,7 +12,8 @@ public class Corretor extends Pessoa {
 		super();
 	}
 	
-	public Corretor(int creci, int telefone, String nome, Imobiliaria imobiliaria, int cpf) {
+	public Corretor(int creci, int telefone, String nome, Imobiliaria imobiliaria, long cpf) throws
+	ValorInvalidoException, CpfInvalidoException  {
 		super(nome, telefone,cpf);
 		this.creci = creci;
 		this.imobiliaria= imobiliaria;
