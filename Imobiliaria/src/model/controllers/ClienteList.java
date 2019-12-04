@@ -49,14 +49,14 @@ public class ClienteList {
 		return  nomeClientes;  // Como ele separa os nomes por \n, penseieu usar esse split pra criar a array.
 	}
 
-	public void toStringOfObject(Object c) {
+	public String toStringOfObject(Object c) {
 		String find = "";
 		for (int i = 0; i < clienteList.size(); i++) {
 			if (this.getCliente(i).getNome().equals(c)) {
 				find = this.getCliente(i).toString();
 			}
 		}
-		JOptionPane.showMessageDialog(null, find);
+		return find;
 	}
 	
 	public String toString() {

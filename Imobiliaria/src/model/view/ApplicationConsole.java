@@ -135,7 +135,13 @@ public class ApplicationConsole {
 			if(contratoList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum contrato firmado!");
 			}
-			// Código aqui
+		    /* Object contrato = JOptionPane.showInputDialog(null, "Selecione seu Contrato","Lista de Contratos",
+			JOptionPane.PLAIN_MESSAGE,null, contratoList.transformaEmArray(), null);
+			if (contrato == null) {
+				JOptionPane.showMessageDialog(null, "Contrato não selecionado");
+			} else {
+				JOptionPane.showMessageDialog(null, contratoList.toStringOfObject(contrato));
+			} */
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
@@ -146,7 +152,13 @@ public class ApplicationConsole {
 			if(imovelList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum imóvel cadastrado!");
 			}
-			// Código aqui
+			/* Object imovel = JOptionPane.showInputDialog(null, "Selecione seu Imóvel","Lista de Imóveis",
+			JOptionPane.PLAIN_MESSAGE,null, imovelList.transformaEmArray(), null);
+			if (imovel == null) {
+				JOptionPane.showMessageDialog(null, "Imóvel não selecionado");
+			} else {
+				JOptionPane.showMessageDialog(null, imovelList.toStringOfObject(imovel));
+			} */
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
@@ -165,7 +177,7 @@ public class ApplicationConsole {
 			if (cliente == null) {
 				JOptionPane.showMessageDialog(null, "Cliente não selecionado");
 			} else {
-				clienteList.toStringOfObject(cliente);
+				JOptionPane.showMessageDialog(null, clienteList.toStringOfObject(cliente));
 			}
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido!",0);
@@ -177,7 +189,13 @@ public class ApplicationConsole {
 			if(corretorList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum corretor cadastrado!");
 			}
-			// Código aqui
+			/* Object corretor = JOptionPane.showInputDialog(null, "Selecione seu Corretor","Lista de Corretores",
+			JOptionPane.PLAIN_MESSAGE,null, corretorList.transformaEmArray(), null);
+			if (corretor == null) {
+				JOptionPane.showMessageDialog(null, "Corretor não selecionado");
+			} else {
+				// JOptionPane.showMessageDialog(null, corretorList.toStringOfObject(corretor));
+			} */
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
