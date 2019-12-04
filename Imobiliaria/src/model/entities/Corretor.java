@@ -1,23 +1,19 @@
 package model.entities;
 
-public class Corretor {
+public class Corretor extends Pessoa {
 
-
-	private int creci;
-	private String telefone;
-	private String nome;
 	private Imobiliaria imobiliaria;
+	private int creci;
 	
-	public Corretor () {
-		
-	}
 	
-	public Corretor(int creci, String telefone, String nome, Imobiliaria imobiliaria) {
-		super();
+	
+	
+	public Corretor(int creci, int telefone, String nome, Imobiliaria imobiliaria, int cpf) {
+		super(nome, telefone,cpf);
 		this.creci = creci;
-		this.telefone = telefone;
-		this.nome = nome;
-		this.imobiliaria = imobiliaria;
+		this.imobiliaria= imobiliaria;
+		
+		
 	}
 
 	public int getCreci() {
@@ -28,11 +24,11 @@ public class Corretor {
 		this.creci = creci;
 	}
 
-	public String getTelefone() {
+	public int getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	public void setTelefone(int telefone) {
 		this.telefone = telefone;
 	}
 

@@ -1,37 +1,30 @@
 package model.entities;
 
-public class Cliente {
+public class Cliente extends Pessoa {
 	
-
-	private String cpf;
-	private String telefone;
-	private String nome;
 	private Corretor corretor;
 	
-	public Cliente() {
+
+	public Cliente(int cpf, int telefone, String nome, Corretor corretor) {
+		super(nome,telefone,cpf);
+		this.corretor = corretor;
+		
 		
 	}
-	
-	public Cliente(String cpf, String telefone, String nome, Corretor corretor) {
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.nome = nome;
-		this.corretor = corretor;
-	}
 
-	public String getCpf() {
+	public int getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(int cpf) {
 		this.cpf = cpf;
 	}
 
-	public String getTelefone() {
+	public int getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
+	public void setTelefone(int telefone) {
 		this.telefone = telefone;
 	}
 
