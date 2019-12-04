@@ -1,13 +1,13 @@
 package model.view;
 
 import javax.swing.JOptionPane;
+
 import model.controllers.*;
 import model.entities.*;
-import model.enums.TipoContrato;
+import model.enums.*;
 import model.exceptions.*;
 
 public class ApplicationConsole {
-	
 	//Função Main
 	public static void main (String[] args) throws ValorInvalidoException, CpfInvalidoException, 
 	TelefoneInvalidoException, CreciInvalidoException, CampoInvalidoException {
@@ -75,7 +75,7 @@ public class ApplicationConsole {
 				
 				Cliente cliente = new Cliente(cpfCliente, telefoneCliente, nomeCliente);
 				clienteList.addCliente(cliente);
-				JOptionPane.showMessageDialog(null, "Cliente  cadastrado com sucesso!");
+				JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
 
 			} catch (CpfInvalidoException e) {
 				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
@@ -117,11 +117,11 @@ public class ApplicationConsole {
 				throw new CreciInvalidoException("Somente 5 digitos!");
 			}
 			
-			Corretor corretor = new Corretor(cpfCorretor, telefoneCorretor, nomeCorretor,creciCorretor);
+			Corretor corretor = new Corretor(creciCorretor, telefoneCorretor, nomeCorretor,cpfCorretor);
 			
 			corretorList.addCorretor(corretor);
 			
-			JOptionPane.showMessageDialog(null, "Corretor  cadastrado com sucesso!");
+			JOptionPane.showMessageDialog(null, "Corretor cadastrado com sucesso!");
 
 		} catch (CpfInvalidoException e) {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
@@ -136,7 +136,6 @@ public class ApplicationConsole {
 	
 	public static void firmaContrato() {
 		boolean fiador;
-		Enum tipoContrato;
 		int numero;
 		try {
 			if(corretorList.estaVazia() || clienteList.estaVazia()) {
@@ -146,7 +145,7 @@ public class ApplicationConsole {
 			numero = Integer.parseInt(JOptionPane.showInputDialog("Digite o número do contrato:"));
 			
 			
-			tipoContrato =  TipoContrato.valueOf(JOptionPane.showInputDialog("Digite o tipo do Contrato (VENDA OU ALUGUEL):"));
+			TipoContrato tipoContrato = TipoContrato.valueOf(JOptionPane.showInputDialog("Digite o tipo do Contrato (VENDA OU ALUGUEL):"));
 			if(tipoContrato == null) {
 				throw new CampoInvalidoException("Campo não selecionado");
 			}
@@ -179,10 +178,10 @@ public class ApplicationConsole {
 				throw new CampoInvalidoException("Campo não selecionado");
 			}
 			
-			Contrato contato = new Contrato(numero, tipoContrato, fiador, corretorList.findCorretor(corretor);
-			
-			
-			
+			Contrato contrato = new Contrato(numero, tipoContrato, fiador, corretorList.findCorretor(corretor),
+					clienteList.findCliente(cliente), imovelList.findImovel(imovel));
+			contratoList.addContrato(contrato);
+			JOptionPane.showMessageDialog(null, "Contrato firmado com sucesso!");
 		}
 		catch (CampoInvalidoException e ) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
@@ -194,19 +193,18 @@ public class ApplicationConsole {
 
 	
 	public static void exibirContratos() {
+		Contrato contrato;
 		try {
 			if(contratoList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum contrato firmado!");
 			}
-		    /* Object contrato = JOptionPane.showInputDialog(null, "Selecione seu Contrato","Lista de Contratos",
-			JOptionPane.PLAIN_MESSAGE,null, contratoList.transformaEmArray(), null);
-			if (contrato == null) {
-				JOptionPane.showMessageDialog(null, "Contrato não selecionado");
-			} else {
-				JOptionPane.showMessageDialog(null, contratoList.toStringOfObject(contrato));
-			} */
+			int numero = Integer.parseInt(JOptionPane.showInputDialog("Digite o número do contrato:"));
+			contrato = contratoList.findContratoByNumero(numero);
+				JOptionPane.showMessageDialog(null, contrato.toString());
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
+		} catch (ValorNaoExisteException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Valor não existe!", 0);
 		}
 	}
 	
@@ -215,13 +213,13 @@ public class ApplicationConsole {
 			if(imovelList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum imóvel cadastrado!");
 			}
-			/* Object imovel = JOptionPane.showInputDialog(null, "Selecione seu Imóvel","Lista de Imóveis",
+			 Object imovel = JOptionPane.showInputDialog(null, "Selecione seu Imóvel","Lista de Imóveis",
 			JOptionPane.PLAIN_MESSAGE,null, imovelList.transformaEmArrayDeNomes(), null);
 			if (imovel == null) {
 				JOptionPane.showMessageDialog(null, "Imóvel não selecionado");
 			} else {
 				JOptionPane.showMessageDialog(null, imovelList.toStringOfObject(imovel));
-			} */
+			} 
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
@@ -266,12 +264,14 @@ public class ApplicationConsole {
 	
 	//Métodos estáticos para criar as listas de objetos
 		static ImovelList imovelList = new ImovelList();
+		static ImobiliariaList imobiliariaList = new ImobiliariaList();
 		static CorretorList corretorList = new CorretorList();
 		static ContratoList contratoList = new ContratoList();
 		static ClienteList clienteList = new ClienteList();
 		static String[] tipoContratoArray = {"VENDA", "ALUGUEL"};
 		
 		//Criando instancias de imobiliaria
+	
 		static Imobiliaria imob1 = new Imobiliaria("12345678901113", "Rua saudades dela", "Lego");
 		static Imobiliaria imob2 = new Imobiliaria("21345678901113", "Rua foda que ela é linda",
 				"Playmobil");

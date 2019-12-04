@@ -56,10 +56,10 @@ public class CorretorList {
 		return find;
 	}
 	
-	public Corretor findCorretor (String corretor) {
+	public Corretor findCorretor (Object corretor) {
 		Corretor find = new Corretor();
 		for (int i = 0; i < corretorList.size(); i++) {
-			if (this.getCorretor(i).getNome().equals(corretor)) {
+			if (this.getCorretor(i).getNome().equals(corretor.toString())) {
 				find = this.getCorretor(i);
 			}
 		}

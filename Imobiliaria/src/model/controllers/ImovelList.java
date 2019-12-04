@@ -56,6 +56,16 @@ public class ImovelList {
 		return find;
 	}
 	
+	public Imovel findImovel (Object imovel) {
+		Imovel find = new Imovel();
+		for (int i = 0; i < imovelList.size(); i++) {
+			if (this.getImovel(i).getNome().equals(imovel.toString())) {
+				find = this.getImovel(i);
+			}
+		}
+		return find;
+	}
+	
 	
 	public String toString() {
 		String result = "";

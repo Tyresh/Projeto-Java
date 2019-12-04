@@ -7,10 +7,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import model.entities.Cliente;
+import model.entities.Corretor;
 
 public class ClienteList {
 	private List<Cliente> clienteList;
-	private String[] nomeClientes;
 	
 	public ClienteList(){
 		clienteList= new ArrayList<>() ;
@@ -54,6 +54,16 @@ public class ClienteList {
 		for (int i = 0; i < clienteList.size(); i++) {
 			if (this.getCliente(i).getNome().equals(c)) {
 				find = this.getCliente(i).toString();
+			}
+		}
+		return find;
+	}
+	
+	public Cliente findCliente (Object cliente) {
+		Cliente find = new Cliente();
+		for (int i = 0; i < clienteList.size(); i++) {
+			if (this.getCliente(i).getNome().equals(cliente.toString())) {
+				find = this.getCliente(i);
 			}
 		}
 		return find;
