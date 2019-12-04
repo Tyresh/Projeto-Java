@@ -10,6 +10,11 @@ public class Contrato {
 	private Cliente cliente;
 	private Imovel imovel;
 	
+	
+	public Contrato() {
+		
+	}
+	
 	public Contrato(int numero, TipoContrato tipoContrato, boolean fiador, Corretor corretor, Cliente cliente,
 			       Imovel imovel) {
 

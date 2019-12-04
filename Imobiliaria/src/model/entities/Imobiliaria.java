@@ -5,6 +5,10 @@ public class Imobiliaria {
 	private String endereco;
 	private String nome;
 	
+	public Imobiliaria() {
+		
+	}
+	
 	public Imobiliaria(String cnpj, String endereco, String nome) {
 		this.cnpj = cnpj;
 		this.endereco = endereco;

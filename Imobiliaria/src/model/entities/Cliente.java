@@ -6,6 +6,10 @@ public class Cliente {
 	private String nome;
 	private Corretor corretor;
 	
+	public Cliente() {
+		
+	}
+	
 	public Cliente(String cpf, String telefone, String nome, Corretor corretor) {
 		this.cpf = cpf;
 		this.telefone = telefone;

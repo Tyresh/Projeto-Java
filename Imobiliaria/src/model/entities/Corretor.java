@@ -6,6 +6,10 @@ public class Corretor {
 	private String nome;
 	private Imobiliaria imobiliaria;
 	
+	public Corretor () {
+		
+	}
+	
 	public Corretor(int creci, String telefone, String nome, Imobiliaria imobiliaria) {
 		super();
 		this.creci = creci;

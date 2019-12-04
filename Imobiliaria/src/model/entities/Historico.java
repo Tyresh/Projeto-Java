@@ -10,6 +10,10 @@ public class Historico {
 	private Corretor corretor;
 	private Imovel imovel;
 	
+	public Historico() {
+		
+	}
+	
 	public Historico(int protocolo, Date dataHistorico, String descricao, Corretor corretor, Imovel imovel) {
 		this.protocolo = protocolo;
 		this.dataHistorico = dataHistorico;

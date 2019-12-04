@@ -12,11 +12,9 @@ public class Imovel {
 	private float preco;
 	private Imobiliaria imobiliaria;
 	
-	
 	public Imovel() {
 		
 	}
-	
 	
 	public Imovel(int matricula, String tipoImovel, String estado, String endereco, 
 			String nome, float preco, Imobiliaria imobiliaria) {
