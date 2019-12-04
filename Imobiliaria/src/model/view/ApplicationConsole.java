@@ -135,6 +135,7 @@ public class ApplicationConsole {
 			if(contratoList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum contrato firmado!");
 			}
+			// Código aqui
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
@@ -145,6 +146,7 @@ public class ApplicationConsole {
 			if(imovelList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum imóvel cadastrado!");
 			}
+			// Código aqui
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
@@ -175,6 +177,7 @@ public class ApplicationConsole {
 			if(corretorList.estaVazia()) {
 				throw new CampoInvalidoException("Não existe nenhum corretor cadastrado!");
 			}
+			// Código aqui
 		} catch(CampoInvalidoException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
