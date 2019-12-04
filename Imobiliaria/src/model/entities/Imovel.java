@@ -18,7 +18,8 @@ public class Imovel {
 	}
 	
 	
-	public Imovel(int matricula, String tipoImovel, String estado, String endereco, String nome, float preco) {
+	public Imovel(int matricula, String tipoImovel, String estado, String endereco, 
+			String nome, float preco, Imobiliaria imobiliaria) {
 		
 		this.matricula = matricula;
 		this.tipoImovel = TipoImovel.valueOf(tipoImovel);
@@ -26,6 +27,7 @@ public class Imovel {
 		this.endereco = endereco;
 		this.nome = nome;
 		this.preco = preco;
+		this.imobiliaria = imobiliaria;
 	}
 
 	public int getMatricula() {
