@@ -32,8 +32,7 @@ public class ApplicationConsole {
 				firmaContrato();
 				continue;
 			}else if (resposta == "Lista de clientes cadastrados") {
-				JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",
-						JOptionPane.PLAIN_MESSAGE, null, clienteList.transformaEmArray(), null);
+				exibirClientes();
 			}
 			
 		}
@@ -128,8 +127,14 @@ public class ApplicationConsole {
 	
 	
 	public static void exibirClientes() {
-		JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",JOptionPane.PLAIN_MESSAGE,
-		null, clienteList.transformaEmArray(), null);
+		Object cliente = JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",
+		JOptionPane.PLAIN_MESSAGE,null, clienteList.transformaEmArray(), null);
+		if (cliente == null) {
+			JOptionPane.showMessageDialog(null, "Fim da Aplicação");
+		} else {
+			clienteList.toStringOfObject(cliente);
+		}
+		
 	}
 	
 	//Métodos estáticos para criar as listas de objetos

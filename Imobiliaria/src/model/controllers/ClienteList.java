@@ -1,7 +1,11 @@
 package model.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import model.entities.Cliente;
 
 public class ClienteList {
@@ -35,8 +39,23 @@ public class ClienteList {
 		return clienteList.isEmpty();
 	}
 	
-	public Object[] transformaEmArray() {
-		return clienteList.toArray();
+	public String[] transformaEmArray() {
+		String result = "";
+		for (Cliente cliente: clienteList) {
+				result = result + cliente.getNome() + " ";
+		}
+		String[] nomeClientes = result.split(" ");
+		return  nomeClientes;  // Como ele separa os nomes por \n, pensei em usar esse split pra criar a array.
+	}
+	
+	public void toStringOfObject(Object c) {
+		String find = "";
+		for (int i = 0; i < clienteList.size(); i++) {
+			if (this.getCliente(i).getNome().equals(c)) {
+				find = this.getCliente(i).toString();
+			}
+		}
+		JOptionPane.showMessageDialog(null, find);
 	}
 	
 	public String toString() {
