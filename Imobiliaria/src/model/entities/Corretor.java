@@ -27,7 +27,7 @@ public class Corretor extends Pessoa {
 		this.creci = creci;
 	}
 
-	public String getCnpjImobiliaria() {
+	public long getCnpjImobiliaria() {
 		return imobiliaria.getCnpj();
 	}
 	

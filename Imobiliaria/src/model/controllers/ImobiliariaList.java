@@ -55,10 +55,10 @@ public class ImobiliariaList {
 		return find;
 	}
 	
-	public Imobiliaria findImobiliaria (String corretor) {
+	public Imobiliaria findImobiliaria (Object imobiliaria) {
 		Imobiliaria find = new Imobiliaria();
 		for (int i = 0; i < imobiliariaList.size(); i++) {
-			if (this.getImobiliaria(i).getNome().equals(corretor)) {
+			if (this.getImobiliaria(i).getNome().equals(imobiliaria)) {
 				find = this.getImobiliaria(i);
 			}
 		}

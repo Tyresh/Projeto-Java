@@ -10,7 +10,7 @@ import model.exceptions.*;
 public class ApplicationConsole {
 	//Função Main
 	public static void main (String[] args) throws ValorInvalidoException, CpfInvalidoException, 
-	TelefoneInvalidoException, CreciInvalidoException, CampoInvalidoException {
+	TelefoneInvalidoException, CreciInvalidoException, CampoInvalidoException, CnpjInvalidoException {
 		
 		ImovelList imovelList = new ImovelList();
 		 boolean lever = true;
@@ -27,10 +27,12 @@ public class ApplicationConsole {
 				break;
 			} else if (resposta == "Cadastrar Cliente") {
 				cadastraCliente();
-				continue;
 			} else if (resposta == "Cadastrar Corretor") {
 				cadastraCorretor();
-				continue;
+			} else if (resposta == "Cadastrar Imobiliária") {
+				cadastraImobiliaria();
+			} else if (resposta == "Cadastrar Imóvel") {
+				cadastraImovel();
 			} else if (resposta == "Firmar Contrato") {
 				firmaContrato();
 				continue;
@@ -129,9 +131,55 @@ public class ApplicationConsole {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 		}
 		
-	// Pessoa corretor = new Corretor(creciCorretor, telefoneCorretor, Imobiliaria, cpfCorretor);
-		
-		
+	}
+	
+	public static void cadastraImobiliaria() throws CnpjInvalidoException {
+		long cnpjImobiliaria = 0L;
+		String nomeImobiliaria = JOptionPane.showInputDialog("Qual o nome da Imobiliaria?");
+		try {
+			cnpjImobiliaria = Long.parseLong(JOptionPane.showInputDialog("Qual o CNPJ da Imobiliaria?"
+					+ "(Apenas números)"));
+			if(cnpjImobiliaria > 99999999999999L ) {
+				throw new CnpjInvalidoException("CNPJ muito longo!");
+			} 
+			if(cnpjImobiliaria < 1000000000000L) {
+				throw new CnpjInvalidoException("CNPJ muito curto!");
+			}
+		} catch (CnpjInvalidoException e) {
+			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+		}
+	   String endereco = JOptionPane.showInputDialog("Qual o endereço da Imobiliaria?");
+	   
+	   Imobiliaria imobiliaria = new Imobiliaria(cnpjImobiliaria, endereco, nomeImobiliaria);
+	   imobiliariaList.addImobiliaria(imobiliaria);
+	   JOptionPane.showMessageDialog(null, "Imobiliária cadastrada com sucesso!");
+	}
+	
+	public static void cadastraImovel() {
+		int numeroMatricula;
+		try {
+			if(imobiliariaList.estaVazia()) {
+				throw new CampoInvalidoException("Não existe nenhuma imobiliária cadastrada!");
+			}
+			
+			numeroMatricula = Integer.parseInt(JOptionPane.showInputDialog("Digite a matrícula do imóvel: "));
+			TipoImovel tipoImovel = TipoImovel.valueOf(JOptionPane.showInputDialog("Digite o tipo do Imóvel"
+					+ "(CASA, APARTAMENTO, COMÉRCIO): "));
+			String nomeImovel = JOptionPane.showInputDialog("Qual o nome do Imóvel?");
+			String endereco = JOptionPane.showInputDialog("Qual o endereço do Imóvel?");
+			double preco = Double.parseDouble(JOptionPane.showInputDialog("Qual o preço do Imóvel?"));
+			Object imobiliaria =  JOptionPane.showInputDialog(null, "Selecione sua Imobiliária",
+					"Lista de Imobiliárias",JOptionPane.PLAIN_MESSAGE,null, 
+					imobiliariaList.transformaEmArrayDeNomes(), null);
+			if(imobiliaria == null) {
+				throw new CampoInvalidoException("Campo não selecionado");
+			}
+			Imovel imovel = new Imovel(numeroMatricula, tipoImovel, State.DISPONIVEL, endereco, nomeImovel, preco,
+					imobiliariaList.findImobiliaria(imobiliaria));
+			JOptionPane.showMessageDialog(null, "Contrato firmado com sucesso!");
+		} catch (CampoInvalidoException e ) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
+		}
 	}
 	
 	public static void firmaContrato() {
@@ -271,24 +319,10 @@ public class ApplicationConsole {
 		static String[] tipoContratoArray = {"VENDA", "ALUGUEL"};
 		
 		//Criando instancias de imobiliaria
-	
-		static Imobiliaria imob1 = new Imobiliaria("12345678901113", "Rua saudades dela", "Lego");
-		static Imobiliaria imob2 = new Imobiliaria("21345678901113", "Rua foda que ela é linda",
-				"Playmobil");
+
 		
 		//Criando instancias de imóvel
-		static Imovel imovel1 = new Imovel(122134, "CASA","DISPONIVEL", "Rua 3",
-				"Castelo do Drácula", 300000,imob1);
-		static Imovel imovel2 = new Imovel(451241, "APARTAMENTO", "DISPONIVEL", "Rua 2",
-				"Castelo Ratimbum", 40000,imob2);
-		static Imovel imovel3 = new Imovel(482951, "COMERCIO", "DISPONIVEL", "Rua 3",
-				"Casa dos Instrumentos", 140000, imob1);
-		static Imovel imovel4 = new Imovel(649275, "CASA", "DISPONIVEL", "Rua 4", 
-				"Doce Lar", 300000, imob2);
-		static Imovel imovel5 = new Imovel(553857, "APARTAMENTO", "DISPONIVEL", "Rua 5",
-				"Oasis", 400000, imob1);
-	
-	
+		
 	
 	
 	

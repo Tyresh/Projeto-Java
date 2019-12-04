@@ -3,6 +3,7 @@ package model.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.entities.Cliente;
 import model.entities.Corretor;
 import model.entities.Imovel;
 
