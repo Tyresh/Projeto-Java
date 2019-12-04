@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Historico {
 	
+	
 	private int protocolo;
 	private Date dataHistorico;
 	private String descricao;
@@ -46,5 +47,9 @@ public class Historico {
 	public int getMatImovel() {
 		return this.imovel.getMatricula();
 	}
-
+	
+	public String toString() {
+		return "Historico protocolo:" + protocolo + "\ndataHistorico=" + this.dataHistorico + "\ndescricao:"
+				+ this.descricao+ "\ncorretor=" + this.corretor + "\nimovel=" + this.imovel;
+	}
 }

@@ -3,6 +3,8 @@ package model.entities;
 import model.enums.TipoContrato;
 
 public class Contrato {
+	
+
 	private int numero;
 	private TipoContrato tipoContrato;
 	private boolean fiador;
@@ -62,6 +64,10 @@ public class Contrato {
 		return imovel.getMatricula();
 	}
 
+	public String toString() {
+		return "Contrato numero:" + this.numero + " \ntipoContrato:" + this.tipoContrato + "\nfiador:" + this.fiador 
+				+ "\ncorretor:"+ this.corretor + "\ncliente:" + this.cliente + "\nimovel:" + this.imovel;
+	}
 	
 	
 	

@@ -1,6 +1,8 @@
 package model.entities;
 
 public class Cliente {
+	
+
 	private String cpf;
 	private String telefone;
 	private String nome;
@@ -43,6 +45,11 @@ public class Cliente {
 
 	public int getCreciCorretor() {
 		return corretor.getCreci();
+	}
+	
+	public String toString() {
+		return "cpf:" + this.cpf + "\ntelefone:" + this.telefone + "\nnome:" 
+	            + this.nome + "\ncorretor:" + this.corretor ;
 	}
 	
 	

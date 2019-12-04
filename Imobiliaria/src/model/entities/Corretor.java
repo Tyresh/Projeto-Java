@@ -1,6 +1,8 @@
 package model.entities;
 
 public class Corretor {
+
+
 	private int creci;
 	private String telefone;
 	private String nome;
@@ -44,5 +46,10 @@ public class Corretor {
 
 	public String getCnpjImobiliaria() {
 		return imobiliaria.getCnpj();
+	}
+	
+	public String toString() {
+		return "Corretor creci:" + this.creci + "\ntelefone:" + this.telefone + 
+				"\nnome=" + this.nome + "\nimobiliaria=" + this.imobiliaria;
 	}
 }

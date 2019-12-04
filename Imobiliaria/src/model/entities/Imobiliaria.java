@@ -1,6 +1,8 @@
 package model.entities;
 
 public class Imobiliaria {
+	
+
 	private String cnpj;
 	private String endereco;
 	private String nome;
@@ -39,6 +41,9 @@ public class Imobiliaria {
 		this.nome = nome;
 	}
 	
+	public String toString() {
+		return "cnpj:" + this.cnpj + "\nendereco:" + this.endereco + "\nnome:" + this.nome;
+	}
 	
 	
 	
