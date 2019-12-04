@@ -10,6 +10,7 @@ public class ApplicationConsole {
 	//Função Main
 	public static void main (String[] args) throws ValorInvalidoException, CpfInvalidoException, 
 	TelefoneInvalidoException, CreciInvalidoException {
+		
 		ImovelList imovelList = new ImovelList();
 		 boolean lever = true;
 		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor","Firmar Contrato",
@@ -33,7 +34,7 @@ public class ApplicationConsole {
 				continue;
 			}else if (resposta == "Lista de clientes cadastrados") {
 				JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",
-						JOptionPane.PLAIN_MESSAGE, null, clienteList.transformaEmArray(), null);
+						JOptionPane.PLAIN_MESSAGE, null, clienteList.transformaEmArray(), null);//Implementei o metodo na classe clienteList
 			}
 			
 		}

@@ -6,6 +6,7 @@ import model.entities.Cliente;
 
 public class ClienteList {
 	private List<Cliente> clienteList;
+	private String[] nomeClientes;
 	
 	public ClienteList(){
 		clienteList= new ArrayList<>() ;
@@ -35,9 +36,15 @@ public class ClienteList {
 		return clienteList.isEmpty();
 	}
 	
-	public Object[] transformaEmArray() {
-		return clienteList.toArray();
-	}
+	public String[] transformaEmArray() {
+		String result = "";
+		for (Cliente cliente: clienteList) {
+			result = result + cliente + "\n";
+					
+		}
+		String[] nomeCLientes = result.split(" ");
+		return  nomeClientes;  // Como ele separa os nomes por \n, penseieu usar esse split pra criar a array.
+	};
 	
 	public String toString() {
 		String result = "";
