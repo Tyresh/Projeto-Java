@@ -31,4 +31,37 @@ public class ApplicationConsole {
 		imovelList.addImovel(imovel5);
 
 	}
+	
+	
+	public static void cadastraCliente() {
+		
+	}
+	
+	public static void cadastraCorretor() {
+		
+	}
+	
+	public static void firmaContrato() {
+		
+	}
+	
+	public static void exibirContrato() {
+		
+	}
+	
+	public static void exibirImovel() {
+		
+	}
+	
+	public static void encontrarCorretor() {
+		
+	}
+	
+	public static void encontrarCliente() {
+		
+	}
+	
+	
+	
+	
 }
