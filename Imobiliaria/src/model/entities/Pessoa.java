@@ -1,5 +1,8 @@
 package model.entities;
 
+import model.exceptions.CpfInvalidoException;
+import model.exceptions.ValorInvalidoException;
+
 public abstract class Pessoa  {
 	protected String nome;
 	protected int telefone;
@@ -8,10 +11,15 @@ public abstract class Pessoa  {
 	public Pessoa() {
 	}
 	
-	public Pessoa(String nome, int telefone, int cpf) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
+	public Pessoa(String nome, int telefone, int cpf)throws ValorInvalidoException, CpfInvalidoException {
+		try{
+			
+			this.nome = nome;
+			this.cpf = cpf;
+			this.telefone = telefone;
+		}catch(Exception e) {
+			System.err.println("Digite um valor correto");
+		}
 	}
 	
 	public String getNome() {
