@@ -53,7 +53,7 @@ public class ApplicationConsole {
 				if(cpfCliente > 99999999999L ) {
 					throw new CpfInvalidoException("Número de CPF muito longo!");
 				} 
-				if(cpfCliente < 10000000000L) {
+				if(cpfCliente < 1000000000L) {
 					throw new CpfInvalidoException("Número de CPF muito curto!");
 				}
 				telefoneCliente = Long.parseLong(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
