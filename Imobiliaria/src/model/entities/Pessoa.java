@@ -6,7 +6,6 @@ public abstract class Pessoa  {
 	protected int cpf;
 	
 	public Pessoa() {
-		
 	}
 	
 	public Pessoa(String nome, int telefone, int cpf) {
