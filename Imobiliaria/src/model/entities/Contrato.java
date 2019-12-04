@@ -3,6 +3,8 @@ package model.entities;
 import model.enums.TipoContrato;
 
 public class Contrato {
+	
+
 	private int numero;
 	private TipoContrato tipoContrato;
 	private boolean fiador;
@@ -10,12 +12,14 @@ public class Contrato {
 	private Cliente cliente;
 	private Imovel imovel;
 	
+	
 	public Contrato() {
 		
 	}
 	
 	public Contrato(int numero, TipoContrato tipoContrato, boolean fiador, Corretor corretor, Cliente cliente,
 			       Imovel imovel) {
+
 		this.numero = numero;
 		this.tipoContrato = tipoContrato;
 		this.fiador = fiador;
@@ -63,6 +67,9 @@ public class Contrato {
 	public String toString() {
 		return "Contrato numero:" + this.numero + " \ntipoContrato:" + this.tipoContrato + "\nfiador:" + this.fiador 
 				+ "\ncorretor:"+ this.corretor + "\ncliente:" + this.cliente + "\nimovel:" + this.imovel;
-	}	
+	}
+	
+	
+	
 	
 }
