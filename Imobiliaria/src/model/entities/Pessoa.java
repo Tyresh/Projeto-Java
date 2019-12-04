@@ -5,18 +5,18 @@ import model.exceptions.ValorInvalidoException;
 
 public abstract class Pessoa  {
 	protected String nome;
-	protected int telefone;
-	protected int cpf;
+	protected long telefone;
+	protected long cpf;
 	
 	public Pessoa() {
 	}
 	
-	public Pessoa(String nome, int telefone, int cpf)throws ValorInvalidoException, CpfInvalidoException {
+	public Pessoa(String nome, long telefoneCliente, long cpfCliente)throws ValorInvalidoException, CpfInvalidoException {
 		try{
 			
 			this.nome = nome;
-			this.cpf = cpf;
-			this.telefone = telefone;
+			this.cpf = cpfCliente;
+			this.telefone = telefoneCliente;
 		}catch(Exception e) {
 			System.err.println("Digite um valor correto");
 		}
