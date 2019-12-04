@@ -2,7 +2,6 @@ package model.entities;
 
 import model.enums.State;
 import model.enums.TipoImovel;
-import model.exceptions.InvalidImovelTypeException;
 
 public class Imovel {
 	private int matricula;
