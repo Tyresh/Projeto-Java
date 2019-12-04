@@ -30,8 +30,7 @@ public class ApplicationConsole {
 		ImovelList imovelList = new ImovelList();
 		 boolean lever = true;
 		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor", 
-				"Exibir Contrato", "Exibir Imóvel", "Encontrar um Corretor",
-				"Encontrar um Cliente"};
+				"Exibir Contrato", "Exibir Imóvel"};
 		 Object resposta;
 		
 		while (lever) {
@@ -56,9 +55,6 @@ public class ApplicationConsole {
 	
 	public static void cadastraCliente() {
 		int cpfCliente = 0, telefoneCliente = 0;
-		if(corretorList.estaVazia()) {
-			JOptionPane.showMessageDialog(null, "É preciso cadastrar um corretor antes de cadastrar um cliente!");
-		} else {
 			String nomeCliente = JOptionPane.showInputDialog("Qual o nome do Cliente?");
 			try {
 				cpfCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o CPF do Cliente? "
@@ -74,7 +70,6 @@ public class ApplicationConsole {
 			}
 		    Cliente cliente = new Cliente(cpfCliente, telefoneCliente, nomeCliente);
 		    clienteList.addCliente(cliente);
-		}
 	}
 	
 	public static void cadastraCorretor() {
