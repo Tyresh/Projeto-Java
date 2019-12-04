@@ -1,8 +1,9 @@
 package model.exceptions;
 
 public class ValorInvalido extends Exception{
-	public String getMessage() {
-		return "Somente números são aceitos neste campo!";
+	
+	public ValorInvalido(String msg) {
+		super(msg);
 	}
 
 }
