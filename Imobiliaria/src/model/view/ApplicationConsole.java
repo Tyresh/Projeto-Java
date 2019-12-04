@@ -120,9 +120,13 @@ public class ApplicationConsole {
 	public static void firmaContrato() {
 		try {
 			if(corretorList.estaVazia() || clienteList.estaVazia()) {
-				throw new CampoInvalidoException("Não existe nenhum corretor ou cliente cadastrado!");
+				throw new CampoInvalidoException("Não existe nenhum corretor, cliente ou imóvel cadastrado!");
 			}
-			// Código aqui
+			Object corretor = JOptionPane.showInputDialog(null, "Selecione seu Corretor","Lista de Corretores",
+					JOptionPane.PLAIN_MESSAGE,null, corretorList.transformaEmArrayDeNomes(), null);
+			if(corretor == null) {
+				JOptionPane.showMessageDialog(null, "Campo não selecionado");
+			}
 		}
 		catch (CampoInvalidoException e ) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
@@ -153,7 +157,7 @@ public class ApplicationConsole {
 				throw new CampoInvalidoException("Não existe nenhum imóvel cadastrado!");
 			}
 			/* Object imovel = JOptionPane.showInputDialog(null, "Selecione seu Imóvel","Lista de Imóveis",
-			JOptionPane.PLAIN_MESSAGE,null, imovelList.transformaEmArray(), null);
+			JOptionPane.PLAIN_MESSAGE,null, imovelList.transformaEmArrayDeNomes(), null);
 			if (imovel == null) {
 				JOptionPane.showMessageDialog(null, "Imóvel não selecionado");
 			} else {
@@ -172,7 +176,7 @@ public class ApplicationConsole {
 			}
 			
 			Object cliente = JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",
-			JOptionPane.PLAIN_MESSAGE,null, clienteList.transformaEmArray(), null);
+			JOptionPane.PLAIN_MESSAGE,null, clienteList.transformaEmArrayDeNomes(), null);
 			
 			if (cliente == null) {
 				JOptionPane.showMessageDialog(null, "Cliente não selecionado");

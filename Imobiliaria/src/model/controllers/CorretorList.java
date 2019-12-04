@@ -2,6 +2,8 @@ package model.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import model.entities.Cliente;
 import model.entities.Corretor;
 
 public class CorretorList {
@@ -33,6 +35,25 @@ public class CorretorList {
 	
 	public boolean estaVazia() {
 		return corretorList.isEmpty();
+	}
+	
+	public String[] transformaEmArrayDeNomes() {
+		String result = "";
+		for (Corretor corretor: corretorList) {
+			result = result + corretor.getNome() + " ";		
+		}
+		String[] nomeCorretor = result.split(" ");
+		return  nomeCorretor;  // Como ele separa os nomes por \n, penseieu usar esse split pra criar a array.
+	}
+
+	public String toStringOfObject(Object c) {
+		String find = "";
+		for (int i = 0; i < corretorList.size(); i++) {
+			if (this.getCorretor(i).getNome().equals(c)) {
+				find = this.getCorretor(i).toString();
+			}
+		}
+		return find;
 	}
 	
 	public String toString() {

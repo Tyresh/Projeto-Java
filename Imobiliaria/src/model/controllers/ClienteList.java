@@ -40,7 +40,7 @@ public class ClienteList {
 		return clienteList.isEmpty();
 	}
 	
-	public String[] transformaEmArray() {
+	public String[] transformaEmArrayDeNomes() {
 		String result = "";
 		for (Cliente cliente: clienteList) {
 			result = result + cliente.getNome() + " ";		
