@@ -6,9 +6,5 @@ import model.enums.*;
 
 public class ApplicationConsole {
 	public static void main (String[] args) {
-<<<<<<< HEAD
-=======
-		
->>>>>>> master
 	}
 }
