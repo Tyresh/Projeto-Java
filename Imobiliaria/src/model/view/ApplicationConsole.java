@@ -42,27 +42,25 @@ public class ApplicationConsole {
 	
 	
 	public static void cadastraCliente() throws ValorInvalidoException, CpfInvalidoException {
-		int cpfCliente = 0, telefoneCliente = 0;
+			long cpfCliente;
+			int telefoneCliente = 0;
 			String nomeCliente = JOptionPane.showInputDialog("Qual o nome do Cliente?");
 			try {
-				cpfCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o CPF do Cliente? "
+				cpfCliente = Long.parseLong(JOptionPane.showInputDialog("Qual o CPF do Cliente? "
 						+ "(Apenas números)"));
-				if(cpfCliente < 999999999) {
-					throw new CpfInvalidoException("Número de cpf muito curto!");// Aqui ele funciona, mas continua a aplicação,
-																					//eu esqueci como faz o erro que para tudo,
-																					//creio que seja Com Runtime ao inves de só exception
-					
+				if(cpfCliente > 10000000000L || cpfCliente < 999999999999L) { // CONSERTA AQUI
+					throw new CpfInvalidoException("Número de cpf muito curto!");
 				}
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
-			}
-			try {
-				telefoneCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
+				} catch (CpfInvalidoException e) {
+					JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+				}
+				try {
+					telefoneCliente = Integer.parseInt(JOptionPane.showInputDialog("Qual o telefone do Cliente? "
 						+ "(Apenas números)"));
-			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 			}
-		    Cliente cliente = new Cliente(cpfCliente, telefoneCliente, nomeCliente);
+		    Cliente cliente = new Cliente(nomeCliente, telefoneCliente, cpfCliente);
 		    clienteList.addCliente(cliente);
 		    JOptionPane.showMessageDialog(null, "Cliente  cadastrado com sucesso!");
 	}

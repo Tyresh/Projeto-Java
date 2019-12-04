@@ -6,12 +6,12 @@ import model.exceptions.ValorInvalidoException;
 public abstract class Pessoa  {
 	protected String nome;
 	protected int telefone;
-	protected int cpf;
+	protected long cpf;
 	
 	public Pessoa() {
 	}
 	
-	public Pessoa(String nome, int telefone, int cpf)throws ValorInvalidoException, CpfInvalidoException {
+	public Pessoa(String nome, int telefone, long cpf)throws ValorInvalidoException, CpfInvalidoException {
 		try{
 			
 			this.nome = nome;
@@ -38,11 +38,11 @@ public abstract class Pessoa  {
 		  this.telefone = telefone;
 		 }
 
-		 public int getCpf() {
+		 public long getCpf() {
 		  return cpf;
 		 }
 
-		 public void setCpf(int cpf) {
+		 public void setCpf(long cpf) {
 		  this.cpf = cpf;
 		 }
 	

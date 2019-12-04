@@ -9,7 +9,7 @@ public class Cliente extends Pessoa {
 		super();
 	}
 	
-	public Cliente(int cpf, int telefone, String nome) throws ValorInvalidoException, CpfInvalidoException {
+	public Cliente(String nome, int telefone, long cpf) throws ValorInvalidoException, CpfInvalidoException {
 		super(nome,telefone,cpf);
 	}
 	
