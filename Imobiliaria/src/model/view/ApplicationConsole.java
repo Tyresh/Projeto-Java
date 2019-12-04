@@ -33,7 +33,8 @@ public class ApplicationConsole {
 				firmaContrato();
 				continue;
 			}else if (resposta == "Lista de clientes cadastrados") {
-				System.out.println(clienteList); // Tenta colocar isso com um array em joptionpane que eu nao consegui fazer...
+				JOptionPane.showInputDialog(null, "Selecione seu Cliente","Lista de Clientes",
+						JOptionPane.PLAIN_MESSAGE, null, clienteList.transformaEmArray(), null);
 			}
 			
 		}

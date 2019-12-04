@@ -35,6 +35,10 @@ public class ClienteList {
 		return clienteList.isEmpty();
 	}
 	
+	public Object[] transformaEmArray() {
+		return clienteList.toArray();
+	}
+	
 	public String toString() {
 		String result = "";
 		for (Cliente cliente: clienteList) {
