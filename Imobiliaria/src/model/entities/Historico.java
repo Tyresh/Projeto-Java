@@ -3,8 +3,6 @@ package model.entities;
 import java.util.Date;
 
 public class Historico {
-	
-	
 	private int protocolo;
 	private Date dataHistorico;
 	private String descricao;

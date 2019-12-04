@@ -5,6 +5,10 @@ public class Corretor extends Pessoa {
 	private Imobiliaria imobiliaria;
 	private int creci;	
 	
+	public Corretor() {
+		super();
+	}
+	
 	public Corretor(int creci, int telefone, String nome, Imobiliaria imobiliaria, int cpf) {
 		super(nome, telefone,cpf);
 		this.creci = creci;
