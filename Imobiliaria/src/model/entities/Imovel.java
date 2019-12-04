@@ -19,7 +19,6 @@ public class Imovel {
 	
 	public Imovel(int matricula, String tipoImovel, String estado, String endereco, 
 			String nome, float preco, Imobiliaria imobiliaria) {
-		
 		this.matricula = matricula;
 		this.tipoImovel = TipoImovel.valueOf(tipoImovel);
 		this.estado = State.valueOf(estado);
