@@ -14,9 +14,9 @@ public class ApplicationConsole {
 		
 		ImovelList imovelList = new ImovelList();
 		 boolean lever = true;
-		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor","Firmar Contrato",
-				"Lista de Contratos cadastrados", "Lista de Imóveis cadastrados","Lista de Clientes cadastrados", 
-				"Lista de Corretores cadastrados"};
+		 String[] opcoes = {"Cadastrar Cliente", "Cadastrar Corretor","Cadastrar Imóvel","Cadastrar Imobiliária",
+				 "Firmar Contrato", "Lista de Contratos cadastrados", "Lista de Imóveis cadastrados",
+				 "Lista de Clientes cadastrados", "Lista de Corretores cadastrados"};
 		 Object resposta;
 		
 		while (lever) {
@@ -145,14 +145,13 @@ public class ApplicationConsole {
 			if(cnpjImobiliaria < 1000000000000L) {
 				throw new CnpjInvalidoException("CNPJ muito curto!");
 			}
+			String endereco = JOptionPane.showInputDialog("Qual o endereço da Imobiliaria?");
+			 Imobiliaria imobiliaria = new Imobiliaria(cnpjImobiliaria, endereco, nomeImobiliaria);
+			   imobiliariaList.addImobiliaria(imobiliaria);
+			   JOptionPane.showMessageDialog(null, "Imobiliária cadastrada com sucesso!");
 		} catch (CnpjInvalidoException e) {
 			JOptionPane.showMessageDialog(null, "Valor Inválido", e.getMessage(), 0);
 		}
-	   String endereco = JOptionPane.showInputDialog("Qual o endereço da Imobiliaria?");
-	   
-	   Imobiliaria imobiliaria = new Imobiliaria(cnpjImobiliaria, endereco, nomeImobiliaria);
-	   imobiliariaList.addImobiliaria(imobiliaria);
-	   JOptionPane.showMessageDialog(null, "Imobiliária cadastrada com sucesso!");
 	}
 	
 	public static void cadastraImovel() {
@@ -176,7 +175,8 @@ public class ApplicationConsole {
 			}
 			Imovel imovel = new Imovel(numeroMatricula, tipoImovel, State.DISPONIVEL, endereco, nomeImovel, preco,
 					imobiliariaList.findImobiliaria(imobiliaria));
-			JOptionPane.showMessageDialog(null, "Contrato firmado com sucesso!");
+			imovelList.addImovel(imovel);
+			JOptionPane.showMessageDialog(null, "Imóvel cadastrado com sucesso!");
 		} catch (CampoInvalidoException e ) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Campo Inválido",0);
 		}
